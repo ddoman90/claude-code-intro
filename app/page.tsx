@@ -4,16 +4,24 @@ export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center">
       <main className="text-center">
-        <h1 className="text-4xl font-bold">Landing Page</h1>
-        <p className="mt-4 text-zinc-600">Welcome to the Notes App</p>
-        <nav className="mt-8">
-          <ul className="list-disc list-inside text-left inline-block">
-            <li><Link href="/dashboard" className="text-blue-600 hover:underline">Dashboard</Link></li>
-            <li><Link href="/notes/1" className="text-blue-600 hover:underline">Note Editor</Link></li>
-            <li><Link href="/p/example" className="text-blue-600 hover:underline">Public Note</Link></li>
-            <li><Link href="/authentication" className="text-blue-600 hover:underline">Authentication</Link></li>
-          </ul>
-        </nav>
+        <h1 className="text-4xl font-bold">Welcome to Notes</h1>
+        <p className="mt-4 text-zinc-600">
+          A simple note-taking app with rich text editing and public sharing
+        </p>
+        <div className="mt-8 flex gap-4 justify-center">
+          <Link
+            href="/authentication?tab=login"
+            className="rounded-md bg-blue-600 px-6 py-2 text-white hover:bg-blue-700"
+          >
+            Login
+          </Link>
+          <Link
+            href="/authentication?tab=signup"
+            className="rounded-md border border-blue-600 px-6 py-2 text-blue-600 hover:bg-blue-50"
+          >
+            Sign Up
+          </Link>
+        </div>
       </main>
     </div>
   );
