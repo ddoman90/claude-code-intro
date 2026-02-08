@@ -5,7 +5,7 @@ import { z } from "zod";
 
 const createNoteSchema = z.object({
   title: z.string().min(1, "Title is required"),
-  content_json: z.string(),
+  content_json: z.record(z.string(), z.unknown()),
 });
 
 export async function POST(request: NextRequest) {
@@ -25,7 +25,7 @@ export async function POST(request: NextRequest) {
   }
 
   const { title, content_json } = result.data;
-  const noteId = createNote(session.user.id, title, content_json);
+  const noteId = createNote(session.user.id, title, JSON.stringify(content_json));
 
   return NextResponse.json({ id: noteId }, { status: 201 });
 }
