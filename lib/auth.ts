@@ -4,10 +4,7 @@ import { getDb } from "./db";
 import { headers } from "next/headers";
 
 export const auth = betterAuth({
-  database: {
-    type: "sqlite",
-    db: getDb(),
-  },
+  database: getDb(),
   emailAndPassword: {
     enabled: true,
   },

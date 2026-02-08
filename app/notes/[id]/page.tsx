@@ -1,8 +1,14 @@
+import { getSession } from "@/lib/auth";
+import { redirect } from "next/navigation";
+
 export default async function NoteEditor({
   params,
 }: {
   params: Promise<{ id: string }>;
 }) {
+  const session = await getSession();
+  if (!session) redirect("/authentication");
+
   const { id } = await params;
 
   return (
