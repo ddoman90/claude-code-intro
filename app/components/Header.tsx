@@ -1,17 +1,9 @@
-"use client";
-
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { signOut, useSession } from "@/lib/auth-client";
+import { getSession } from "@/lib/auth";
+import { LogoutButton } from "./LogoutButton";
 
-export function Header() {
-  const router = useRouter();
-  const { data: session } = useSession();
-
-  async function handleLogout() {
-    await signOut();
-    router.push("/authentication");
-  }
+export async function Header() {
+  const session = await getSession();
 
   return (
     <header className="border-b border-zinc-200 bg-white">
@@ -19,14 +11,7 @@ export function Header() {
         <Link href="/dashboard" className="text-xl font-bold text-zinc-900">
           NextNotes
         </Link>
-        {session && (
-          <button
-            onClick={handleLogout}
-            className="cursor-pointer text-sm text-zinc-600 hover:text-zinc-900"
-          >
-            Logout
-          </button>
-        )}
+        {session && <LogoutButton />}
       </div>
     </header>
   );
