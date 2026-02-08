@@ -6,7 +6,7 @@ type Params = SQLQueryBindings[];
 
 export function getDb(): Database {
   if (!db) {
-    db = new Database("data/app.db", { create: true });
+    db = new Database(process.env.DB_PATH || "data/app.db", { create: true });
     db.exec("PRAGMA journal_mode = WAL;");
     initTables(db);
   }

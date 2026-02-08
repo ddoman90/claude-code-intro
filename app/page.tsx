@@ -10,13 +10,13 @@ export default function Home() {
         </p>
         <div className="mt-8 flex gap-4 justify-center">
           <Link
-            href="/authentication?tab=login"
+            href="/authentication?mode=login"
             className="rounded-md bg-blue-600 px-6 py-2 text-white hover:bg-blue-700"
           >
             Login
           </Link>
           <Link
-            href="/authentication?tab=signup"
+            href="/authentication?mode=signup"
             className="rounded-md border border-blue-600 px-6 py-2 text-blue-600 hover:bg-blue-50"
           >
             Sign Up
